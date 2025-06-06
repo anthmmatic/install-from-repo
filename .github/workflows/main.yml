@@ -15,4 +15,4 @@ jobs:
           git config --global url."https://${{ secrets.PAT }}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
           git config --global url."https://${{ secrets.PAT }}:x-oauth-basic@github.com/".insteadOf "git@github.com:"
           git config --global url."https://${{ secrets.PAT }}:x-oauth-basic@github.com/".insteadOf "ssh://git@github.com/"
-      - run: npm install
+      - run: npm install --no-optional
