@@ -12,5 +12,5 @@ jobs:
         with:
           node-version: 20.x
       - run: |
-          git config --global url."https://${{ secrets.PAT }}@github.com/".insteadOf ssh://git@github.com/
+          git config --global url."https://${{ secrets.PAT }}:x-oauth-basic@github.com/".insteadOf ssh://git@github.com/
       - run: npm install
