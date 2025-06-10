@@ -4,6 +4,9 @@ on:
 jobs:
   install:
     runs-on: ubuntu-latest
+    env:
+      GIT_TRACE: 1
+      GIT_CURL_VERBOSE: 1
     steps:
       - uses: actions/checkout@v4
         with:
@@ -15,4 +18,4 @@ jobs:
           git config --global url."https://${{ secrets.PAT }}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
           git config --global url."https://${{ secrets.PAT }}:x-oauth-basic@github.com/".insteadOf "git@github.com:"
           git config --global url."https://${{ secrets.PAT }}:x-oauth-basic@github.com/".insteadOf "ssh://git@github.com/"
-      - run: npm install --no-optional
+      - run: npm install --no-optional --verbose
