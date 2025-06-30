@@ -10,6 +10,6 @@
   "license": "ISC",
   "homepage": "https://github.com/anthms/private-npm-package#readme",
   "dependencies": {
-    "myrepo": "github:anthms/private-npm-package#main"
+    "myrepo": "github:anthms/private-npm-package#v1.0.0"
   }
 }
