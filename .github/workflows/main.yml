@@ -8,15 +8,25 @@ jobs:
       GIT_TRACE: 1
       GIT_CURL_VERBOSE: 1
     steps:
-      - uses: actions/checkout@v4
+      # 1) Checkout the Onkyo repo
+      - name: Checkout code
+        uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - uses: actions/setup-node@v2
+
+      # 2) Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
           node-version: '16'
-      - run: |
+
+      # 3) Rewrite SSH => HTTPS with the fine-grained token
+      - name: Rewrite any GitHub URL with the PAT
+        run: |
+          # Replace with the name of your token secret:
           git config --global url."https://${{ secrets.PAT }}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
           git config --global url."https://${{ secrets.PAT }}:x-oauth-basic@github.com/".insteadOf "git@github.com:"
           git config --global url."https://${{ secrets.PAT }}:x-oauth-basic@github.com/".insteadOf "ssh://git@github.com/"
+          
       - run: npm install --no-optional --verbose
       - run: cat package-lock.json
